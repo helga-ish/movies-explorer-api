@@ -13,4 +13,4 @@ pm2 start app.js
  
 IP 51.250.80.169
  
-Backend https://api.findamovie.nomoredomains.xyz 
+Backend https://api.findmovies.explorer.nomoredomains.xyz 

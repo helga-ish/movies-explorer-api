@@ -33,7 +33,7 @@ mongoose.connect(uri);
 
 // app.use(cors({
 //   credentials: true,
-//   origin: 'https://mesto.place.nomoredomains.work',
+//   origin: 'https://findmovies.explorer.xyz',
 // }));
 
 app.use(requestLogger);
