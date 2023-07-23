@@ -50,7 +50,7 @@ const deleteMovie = (req, res, next) => {
       } else if (movieData.owner.toString() !== req.user._id) {
         throw new ForbiddenError();
       }
-      return Movie.findByIdAndRemove(req.params.movieId)
+      return Movie.findOneAndDelete({ movieId: req.params.movieId })
         .then((movie) => res.status(200).send({ data: movie }))
         .catch(next);
     })
