@@ -25,9 +25,9 @@ const createUser = (req, res, next) => {
     .then((hash) => {
       User.create(
         {
+          name: req.body.name,
           email: req.body.email,
           password: hash,
-          name: req.body.name,
         },
       )
         .then((user) => res.status(201).send({

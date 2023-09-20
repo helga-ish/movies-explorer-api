@@ -43,16 +43,15 @@ const createMovie = (req, res, next) => {
 };
 
 const deleteMovie = (req, res, next) => {
-  Movie.findOne({ movieId: req.params.movieId })
-    .then((movieData) => {
-      if (movieData === null) {
+  Movie.findOneAndDelete({
+    movieId: req.params.movieId,
+    owner: req.user._id
+  })
+    .then((movie) => {
+      if (movie === null) {
         throw new NotFoundError('Фильм не найден.');
-      } else if (movieData.owner.toString() !== req.user._id) {
-        throw new ForbiddenError();
       }
-      return Movie.findOneAndDelete({ movieId: req.params.movieId })
-        .then((movie) => res.status(200).send({ data: movie }))
-        .catch(next);
+      res.status(200).send({ data: movie });
     })
     .catch(next);
 };
