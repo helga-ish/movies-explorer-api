@@ -24,11 +24,11 @@ const movieSchema = new mongoose.Schema({
     required: true,
   },
   image: {
-    type: String,
+    type: Object,
     required: true,
-    validate: {
-      validator: (v) => validator.isURL(v),
-    },
+    // validate: {
+    //   validator: (v) => validator.isURL(v),
+    // },
   },
   trailerLink: {
     type: String,
@@ -38,11 +38,11 @@ const movieSchema = new mongoose.Schema({
     },
   },
   thumbnail: {
-    type: String,
-    required: true,
-    validate: {
-      validator: (v) => validator.isURL(v),
-    },
+    type: Object,
+    // required: true,
+    // validate: {
+    //   validator: (v) => validator.isURL(v),
+    // },
   },
   owner: {
     type: mongoose.ObjectId,

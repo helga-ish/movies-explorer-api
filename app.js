@@ -6,7 +6,7 @@ const {
   celebrate,
   errors,
 } = require('celebrate');
-// const cors = require('cors');
+const cors = require('cors');
 
 const {
   login,
@@ -21,7 +21,7 @@ const {
 } = require('./middlewares/validationSchema');
 const NotFoundError = require('./components/NotFoundError');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3001 } = process.env;
 const app = express();
 
 app.use(express.json());
@@ -31,10 +31,11 @@ const uri = 'mongodb://0.0.0.0:27017/bitfilmsdb';
 
 mongoose.connect(uri);
 
-// app.use(cors({
-//   credentials: true,
-//   origin: 'https://findmovies.explorer.xyz',
-// }));
+app.use(cors({
+  credentials: true,
+  // origin: 'https://findmovies.explorer.nomoredomainsicu.ru',
+  origin: 'http://localhost:3000'
+}));
 
 app.use(requestLogger);
 

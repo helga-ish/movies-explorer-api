@@ -23,9 +23,9 @@ const signInSchema = Joi.object().keys({
 });
 
 const signUpSchema = Joi.object().keys({
+  ...userNameSchema,
   ...userEmailSchema,
   ...userPasswordSchema,
-  ...userNameSchema,
 });
 
 const movieInfoSchema = Joi.object().keys({
@@ -34,9 +34,9 @@ const movieInfoSchema = Joi.object().keys({
   duration: Joi.number().required(),
   year: Joi.string().required(),
   description: Joi.string().required(),
-  image: Joi.string().required().pattern(/(^https?:\/\/)?(www\.)?[a-z0-9~_\-.]+\.[a-z]{2,9}([!-~]*)?$/i),
+  image: Joi.object().required(),
   trailerLink: Joi.string().required().pattern(/(^https?:\/\/)?(www\.)?[a-z0-9~_\-.]+\.[a-z]{2,9}([!-~]*)?$/i),
-  thumbnail: Joi.string().required().pattern(/(^https?:\/\/)?(www\.)?[a-z0-9~_\-.]+\.[a-z]{2,9}([!-~]*)?$/i),
+  thumbnail: Joi.object(),
   movieId: Joi.number().required(),
   nameRU: Joi.string().required(),
   nameEN: Joi.string().required(),
